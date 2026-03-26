@@ -292,6 +292,21 @@
       padding: 0.2rem 0.55rem;
     }
 
+    .skill-subgroup {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .sub-label {
+      font-size: 0.72rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
     /* ── EXPERIENCE ── */
     .timeline {
       display: flex;
@@ -366,6 +381,13 @@
     .exp-desc li {
       margin-left: 1.1rem;
       margin-bottom: 0.3rem;
+    }
+
+    .exp-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.85rem;
     }
 
     /* ── PROJECTS ── */
@@ -548,15 +570,28 @@
           <div class="skill-list">
             <span class="tag">Java</span>
             <span class="tag">Spring Boot</span>
-            <span class="tag">Node.js</span>
           </div>
         </div>
         <div class="skill-card">
           <p class="skill-category">Database</p>
-          <div class="skill-list">
-            <span class="tag">MySQL</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">Redis</span>
+          <div class="skill-subgroup">
+            <span class="sub-label">Main</span>
+            <div class="skill-list">
+              <span class="tag">MySQL</span>
+            </div>
+          </div>
+          <div class="skill-subgroup">
+            <span class="sub-label">Experience</span>
+            <div class="skill-list">
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Oracle Database</span>
+            </div>
+          </div>
+          <div class="skill-subgroup">
+            <span class="sub-label">Cache</span>
+            <div class="skill-list">
+              <span class="tag">Redis</span>
+            </div>
           </div>
         </div>
         <div class="skill-card">
@@ -564,7 +599,18 @@
           <div class="skill-list">
             <span class="tag">Docker</span>
             <span class="tag">AWS</span>
-            <span class="tag">GitHub Actions</span>
+          </div>
+          <div class="skill-subgroup">
+            <span class="sub-label">CI/CD</span>
+            <div class="skill-list">
+              <span class="tag">GitHub Actions</span>
+            </div>
+          </div>
+          <div class="skill-subgroup">
+            <span class="sub-label">WAS</span>
+            <div class="skill-list">
+              <span class="tag">JEUS8</span>
+            </div>
           </div>
         </div>
       </div>
@@ -578,27 +624,127 @@
     <div class="timeline">
 
       <div class="timeline-item">
-        <div class="timeline-date">2023.03 — 현재</div>
+        <div class="timeline-date">2022.06 — 2022.10</div>
         <div class="timeline-body">
-          <p class="exp-company">회사명 A</p>
-          <p class="exp-role">Software Engineer</p>
+          <p class="exp-company">애드캡슐소프트</p>
+          <p class="exp-role">삼성증권 디지털PF 주식굴링 서비스 구축</p>
           <ul class="exp-desc">
-            <li>주요 업무 및 성과를 bullet point로 작성하세요.</li>
-            <li>수치/지표로 임팩트를 표현하면 더욱 효과적입니다.</li>
-            <li>예) API 응답속도 40% 개선, MAU 10만 서비스 개발 등</li>
+            <li>REST API 개발 및 프론트 연동 지원</li>
+            <li>Java8 Lambda/Stream 적용으로 컬렉션 처리 로직 개선</li>
           </ul>
+          <div class="exp-stack">
+            <span class="tag">Java8</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">JEUS8</span>
+            <span class="tag">Subversion</span>
+          </div>
         </div>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-date">2021.01 — 2023.02</div>
+        <div class="timeline-date">2023.04 — 2023.09</div>
         <div class="timeline-body">
-          <p class="exp-company">회사명 B</p>
-          <p class="exp-role">Junior Developer</p>
+          <p class="exp-company">애드캡슐소프트</p>
+          <p class="exp-role">삼성증권 투자스쿨 리뉴얼</p>
           <ul class="exp-desc">
-            <li>이전 직장에서의 주요 업무를 기술하세요.</li>
-            <li>사용한 기술 스택도 함께 언급하면 좋습니다.</li>
+            <li>기존 Spring MVC 구조 REST API 구조로 전환</li>
+            <li>게시판 및 학습 콘텐츠 관리 API 설계 및 구현</li>
+            <li>SNS 로그인 연동 (OAuth2) 구현</li>
+            <li>보안 취약점 (XSS, 세션 관리, 쿠키 설정 등) 개선 조치</li>
+            <li>JPA 기반 데이터 접근 구조 신규 적용</li>
+            <li>KMCert 본인인증 등 외부 솔루션 API 연동</li>
           </ul>
+          <div class="exp-stack">
+            <span class="tag">Java8</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">MariaDB</span>
+            <span class="tag">JPA</span>
+            <span class="tag">JEUS8</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2023.12 — 2024.01</div>
+        <div class="timeline-body">
+          <p class="exp-company">애드캡슐소프트</p>
+          <p class="exp-role">미켈란골프 소개 사이트</p>
+          <ul class="exp-desc">
+            <li>REST API 개발</li>
+            <li>JPA Specification 동적 조회 기능 구현</li>
+            <li>Docker 배포 환경 설정 및 구조 학습/적용</li>
+            <li>JWT 인증 구조 학습 및 적용</li>
+          </ul>
+          <div class="exp-stack">
+            <span class="tag">Java17</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">MariaDB</span>
+            <span class="tag">Docker</span>
+            <span class="tag">JPA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2024.04 — 2024.09</div>
+        <div class="timeline-body">
+          <p class="exp-company">현대글로비스</p>
+          <p class="exp-role">오토벨 수출플랫폼 고도화</p>
+          <ul class="exp-desc">
+            <li>중고차 수출, 선적, 수령 프로세스 시스템 고도화</li>
+            <li>선적 도메인 기능 개선 API 개발</li>
+            <li>QueryDSL 기반 데이터 조회 로직 개선</li>
+            <li>Oracle/Tibero 프로시저 작성 및 성능 개선 수행</li>
+          </ul>
+          <div class="exp-stack">
+            <span class="tag">Java8</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">Tibero</span>
+            <span class="tag">JPA</span>
+            <span class="tag">QueryDSL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2024.12 — 2025.05</div>
+        <div class="timeline-body">
+          <p class="exp-company">애드캡슐소프트</p>
+          <p class="exp-role">삼성증권 TAX 플랫폼 구축</p>
+          <ul class="exp-desc">
+            <li>VO 기반 REST API 개발</li>
+            <li>국세청/정부24 스크래핑 솔루션 적용</li>
+            <li>JEUS 로컬 환경 및 ANT 빌드 세팅</li>
+            <li>기획-외부업체 간 기술 커뮤니케이션 수행</li>
+          </ul>
+          <div class="exp-stack">
+            <span class="tag">Java6/8</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">JEUS8</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2025.07 — 2026.01</div>
+        <div class="timeline-body">
+          <p class="exp-company">현대글로비스</p>
+          <p class="exp-role">오토벨 셀러 고도화</p>
+          <ul class="exp-desc">
+            <li>셀러/관리자 사이트 거래, 주문 도메인 핵심 API 설계 및 개발</li>
+            <li>Git Feature Branch 전략 기반 협업 수행</li>
+            <li>Jenkins 배포 및 운영 반영 담당</li>
+            <li>FCM 푸시 서버 연동 구조 분석 및 적용</li>
+            <li>QueryDSL 활용 조회 성능 개선</li>
+          </ul>
+          <div class="exp-stack">
+            <span class="tag">Java8</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">Tibero</span>
+            <span class="tag">JPA</span>
+            <span class="tag">QueryDSL</span>
+            <span class="tag">Jenkins</span>
+          </div>
         </div>
       </div>
 
