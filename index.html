@@ -187,6 +187,18 @@
       gap: 2rem;
     }
 
+    .about-photo {
+      width: 140px;
+      height: 175px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: var(--radius);
+      border: 3px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
     .about-text {
       color: var(--text-muted);
       font-size: 0.97rem;
@@ -496,11 +508,14 @@
     <p class="section-label">About</p>
     <h2 class="section-title">저에 대해서</h2>
     <div class="about-grid">
-      <p class="about-text">
+      <div>
+        <img src="images/sehyun.jpg" alt="김세현 프로필 사진" class="about-photo" />
+        <p class="about-text">
         자기소개 내용을 여기에 작성하세요.<br><br>
         어떤 기술 스택을 주로 다루는지, 어떤 철학으로 개발하는지,
         팀에서 어떤 역할을 하는지 등을 자유롭게 적어주세요.
-      </p>
+        </p>
+      </div>
       <div class="about-info">
         <div class="info-row">
           <span class="info-label">이름</span>
@@ -508,15 +523,15 @@
         </div>
         <div class="info-row">
           <span class="info-label">경력</span>
-          <span class="info-value">N년차</span>
+          <span class="info-value">4년차</span>
         </div>
         <div class="info-row">
           <span class="info-label">위치</span>
-          <span class="info-value">서울, 대한민국</span>
+          <span class="info-value">광진구, 서울, 대한민국</span>
         </div>
         <div class="info-row">
           <span class="info-label">학력</span>
-          <span class="info-value">OO대학교 OO학과</span>
+          <span class="info-value">명지전문대학 컴퓨터공학과</span>
         </div>
       </div>
     </div>
@@ -534,14 +549,6 @@
             <span class="tag">Java</span>
             <span class="tag">Spring Boot</span>
             <span class="tag">Node.js</span>
-          </div>
-        </div>
-        <div class="skill-card">
-          <p class="skill-category">Frontend</p>
-          <div class="skill-list">
-            <span class="tag">React</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">HTML/CSS</span>
           </div>
         </div>
         <div class="skill-card">
