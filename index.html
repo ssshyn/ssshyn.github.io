@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --surface: #ffffff;
+      --surface2: #f4f3ef;
+      --border: #e8e5de;
+      --accent: #e8652a;
+      --accent2: #f07d3f;
+      --text: #1a1814;
+      --text-muted: #7a756a;
+      --green: #2d9e5f;
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(250, 250, 248, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent2);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* ── LAYOUT ── */
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 6rem;
+    }
+
+    .hero-label {
+      font-size: 0.85rem;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero-name {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-name span {
+      color: var(--accent2);
+    }
+
+    .hero-role {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-desc {
+      max-width: 540px;
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(232, 101, 42, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 18px rgba(232, 101, 42, 0.35);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent2);
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-label {
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .about-text {
+      color: var(--text-muted);
+      font-size: 0.97rem;
+      line-height: 1.8;
+    }
+
+    .about-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .info-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.75rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .info-label {
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 600;
+      min-width: 60px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding-top: 1px;
+    }
+
+    .info-value {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    /* ── SKILLS ── */
+    #skills {
+      background: var(--surface);
+      max-width: 100%;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    #skills > .inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .skill-category {
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.2rem 0.55rem;
+    }
+
+    /* ── EXPERIENCE ── */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 2rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 130px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item:first-child::before { top: 20px; }
+    .timeline-item:last-child::before  { bottom: calc(100% - 20px); }
+
+    .timeline-date {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding-top: 0.2rem;
+      text-align: right;
+    }
+
+    .timeline-body {
+      padding: 0 0 3rem 2rem;
+      position: relative;
+    }
+
+    .timeline-body::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      border-radius: 50%;
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      box-shadow: 0 0 0 3px rgba(232, 101, 42, 0.15);
+    }
+
+    .exp-company {
+      font-size: 0.82rem;
+      color: var(--accent2);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .exp-role {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .exp-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+
+    .exp-desc li {
+      margin-left: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .project-title {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .project-links a {
+      font-size: 0.82rem;
+      color: var(--accent2);
+      text-decoration: none;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      text-align: center;
+    }
+
+    .contact-desc {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 0.97rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .about-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item::before { display: none; }
+      .timeline-date { text-align: left; }
+      .timeline-body { padding-left: 0; }
+      .timeline-body::before { display: none; }
+
+      nav { padding: 1rem; }
+      .nav-links { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Portfolio</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="hero-label">Hello, I'm</p>
+    <h1 class="hero-name">김세현<span>.</span></h1>
+    <p class="hero-role">Software Engineer</p>
+    <p class="hero-desc">
+      간결하고 임팩트 있는 한 줄 소개를 여기에 작성하세요.<br>
+      내가 어떤 문제를 풀고, 어떤 가치를 만드는 개발자인지.
+    </p>
+    <div class="hero-cta">
+      <a href="#experience" class="btn btn-primary">경력 보기</a>
+      <a href="#contact" class="btn btn-ghost">연락하기</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <h2 class="section-title">저에 대해서</h2>
+    <div class="about-grid">
+      <p class="about-text">
+        자기소개 내용을 여기에 작성하세요.<br><br>
+        어떤 기술 스택을 주로 다루는지, 어떤 철학으로 개발하는지,
+        팀에서 어떤 역할을 하는지 등을 자유롭게 적어주세요.
+      </p>
+      <div class="about-info">
+        <div class="info-row">
+          <span class="info-label">이름</span>
+          <span class="info-value">김세현</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">경력</span>
+          <span class="info-value">N년차</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">위치</span>
+          <span class="info-value">서울, 대한민국</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">학력</span>
+          <span class="info-value">OO대학교 OO학과</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="inner">
+      <p class="section-label">Skills</p>
+      <h2 class="section-title">기술 스택</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <p class="skill-category">Backend</p>
+          <div class="skill-list">
+            <span class="tag">Java</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">Node.js</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <p class="skill-category">Frontend</p>
+          <div class="skill-list">
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">HTML/CSS</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <p class="skill-category">Database</p>
+          <div class="skill-list">
+            <span class="tag">MySQL</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Redis</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <p class="skill-category">DevOps</p>
+          <div class="skill-list">
+            <span class="tag">Docker</span>
+            <span class="tag">AWS</span>
+            <span class="tag">GitHub Actions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label">Experience</p>
+    <h2 class="section-title">경력</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date">2023.03 — 현재</div>
+        <div class="timeline-body">
+          <p class="exp-company">회사명 A</p>
+          <p class="exp-role">Software Engineer</p>
+          <ul class="exp-desc">
+            <li>주요 업무 및 성과를 bullet point로 작성하세요.</li>
+            <li>수치/지표로 임팩트를 표현하면 더욱 효과적입니다.</li>
+            <li>예) API 응답속도 40% 개선, MAU 10만 서비스 개발 등</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2021.01 — 2023.02</div>
+        <div class="timeline-body">
+          <p class="exp-company">회사명 B</p>
+          <p class="exp-role">Junior Developer</p>
+          <ul class="exp-desc">
+            <li>이전 직장에서의 주요 업무를 기술하세요.</li>
+            <li>사용한 기술 스택도 함께 언급하면 좋습니다.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Projects</p>
+    <h2 class="section-title">프로젝트</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <p class="project-title">프로젝트 이름 1</p>
+        <p class="project-desc">
+          프로젝트에 대한 간략한 설명을 적어주세요.
+          어떤 문제를 풀었고 어떤 기술을 사용했는지.
+        </p>
+        <div class="project-tags">
+          <span class="tag">React</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">AWS</span>
+        </div>
+        <div class="project-links">
+          <a href="#">GitHub →</a>
+          <a href="#">Live Demo →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <p class="project-title">프로젝트 이름 2</p>
+        <p class="project-desc">
+          프로젝트에 대한 간략한 설명을 적어주세요.
+          어떤 문제를 풀었고 어떤 기술을 사용했는지.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Docker</span>
+        </div>
+        <div class="project-links">
+          <a href="#">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <p class="project-title">프로젝트 이름 3</p>
+        <p class="project-desc">
+          프로젝트에 대한 간략한 설명을 적어주세요.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+        </div>
+        <div class="project-links">
+          <a href="#">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <p class="project-title">프로젝트 이름 4</p>
+        <p class="project-desc">
+          프로젝트에 대한 간략한 설명을 적어주세요.
+        </p>
+        <div class="project-tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">Next.js</span>
+        </div>
+        <div class="project-links">
+          <a href="#">GitHub →</a>
+          <a href="#">Live Demo →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">연락처</h2>
+    <p class="contact-desc">
+      새로운 기회나 협업 제안은 언제든지 환영합니다.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:your@email.com" class="btn btn-primary">이메일 보내기</a>
+      <a href="https://github.com/username" class="btn btn-ghost" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/username" class="btn btn-ghost" target="_blank">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 김세현. Built with HTML & CSS.</p>
+  </footer>
+
+</body>
+</html>
