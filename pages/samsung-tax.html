@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>삼성증권 TAX 플랫폼 구축</title>
+  <style>
+    :root { --bg: #fafaf8; --surface: #ffffff; --surface2: #f4f3ef; --border: #e8e5de; --accent: #e8652a; --accent2: #f07d3f; --text: #1a1814; --text-muted: #7a756a; --radius: 12px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.6; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: rgba(250,250,248,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-back { color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+    .nav-back:hover { color: var(--accent2); }
+    .nav-title { font-size: 0.9rem; color: var(--text-muted); }
+    .container { max-width: 780px; margin: 0 auto; padding: 6rem 2rem 5rem; }
+    .page-header { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .page-label { font-size: 0.8rem; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .page-title { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+    .page-company { font-size: 1rem; color: var(--text-muted); margin-bottom: 1.25rem; }
+    .page-meta { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .meta-tag { font-size: 0.8rem; padding: 0.3rem 0.75rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; color: var(--text-muted); }
+    .meta-tag.accent { background: rgba(232,101,42,0.08); border-color: rgba(232,101,42,0.3); color: var(--accent); }
+    .section { margin-bottom: 2.5rem; }
+    .section-title { font-size: 1rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid rgba(232,101,42,0.2); }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1rem; }
+    .card-body { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; }
+    .task-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .task-list li { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; }
+    .task-list li::before { content: '▸'; color: var(--accent); font-size: 0.75rem; margin-top: 0.3rem; flex-shrink: 0; }
+    .stack-wrap { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag { font-size: 0.8rem; color: var(--text-muted); background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 0.25rem 0.65rem; }
+    .trouble-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.25rem; border-left: 3px solid var(--accent); }
+    .trouble-label { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.6rem; }
+    .trouble-label.problem { background: rgba(232,101,42,0.1); color: var(--accent); }
+    .trouble-label.cause   { background: rgba(122,117,106,0.1); color: var(--text-muted); }
+    .trouble-label.solve   { background: rgba(45,158,95,0.1); color: #2d9e5f; }
+    .trouble-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem; }
+    .trouble-row { margin-bottom: 0.85rem; }
+    .trouble-row:last-child { margin-bottom: 0; }
+    .trouble-row p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-top: 0.3rem; }
+    .retro-card { background: rgba(232,101,42,0.04); border: 1px solid rgba(232,101,42,0.2); border-radius: var(--radius); padding: 1.5rem; }
+    .retro-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; }
+    .placeholder { background: var(--surface2); border: 2px dashed var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.88rem; }
+    @media (max-width: 640px) { nav { padding: 1rem; } .container { padding: 5rem 1.25rem 3rem; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-back">← 포트폴리오로 돌아가기</a>
+    <span class="nav-title">애드캡슐소프트</span>
+  </nav>
+
+  <div class="container">
+
+    <div class="page-header">
+      <p class="page-label">Experience</p>
+      <h1 class="page-title">삼성증권 TAX 플랫폼 구축</h1>
+      <p class="page-company">애드캡슐소프트</p>
+      <div class="page-meta">
+        <span class="meta-tag accent">2024.12 — 2025.05</span>
+        <span class="meta-tag">Java6/8</span>
+        <span class="meta-tag">Spring Boot</span>
+        <span class="meta-tag">JEUS8</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-title">프로젝트 개요</p>
+      <div class="card">
+        <p class="card-body">프로젝트 배경 및 목적을 작성해 주세요.<br>어떤 서비스였는지, 팀 규모, 본인의 역할 등을 자유롭게 기술하세요.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-title">주요 업무</p>
+      <div class="card">
+        <ul class="task-list">
+          <li>VO 기반 REST API 개발</li>
+          <li>국세청/정부24 스크래핑 솔루션 적용</li>
+          <li>JEUS 로컬 환경 및 ANT 빌드 세팅</li>
+          <li>기획-외부업체 간 기술 커뮤니케이션 수행</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-title">기술 스택</p>
+      <div class="card">
+        <div class="stack-wrap">
+          <span class="tag">Java6/8</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">JEUS8</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-title">트러블슈팅</p>
+      <div class="placeholder">겪었던 문제와 해결 과정을 작성해 주세요.</div>
+    </div>
+
+    <div class="section">
+      <p class="section-title">회고</p>
+      <div class="retro-card">
+        <p>이 프로젝트를 통해 배운 점, 아쉬웠던 점, 성장한 부분을 자유롭게 작성해 주세요.</p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
