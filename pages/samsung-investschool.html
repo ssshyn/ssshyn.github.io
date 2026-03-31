@@ -112,13 +112,65 @@
 
     <div class="section">
       <p class="section-title">트러블슈팅</p>
-      <div class="placeholder">겪었던 문제와 해결 과정을 작성해 주세요.</div>
+
+      <div class="trouble-card">
+        <div class="trouble-title">OAuth2 로그인 후 세션 유실 문제</div>
+        <div class="trouble-row">
+          <span class="trouble-label problem">Problem</span>
+          <p>SNS OAuth2 로그인 성공 후 리다이렉트 과정에서 간헐적으로 세션이 유실되어 로그인 상태가 유지되지 않는 문제 발생</p>
+        </div>
+        <div class="trouble-row">
+          <span class="trouble-label cause">Cause</span>
+          <p>JEUS8 클러스터 환경에서 OAuth2 콜백 요청이 로그인 요청을 처리한 서버와 다른 서버로 라우팅되어 세션 불일치 발생</p>
+        </div>
+        <div class="trouble-row">
+          <span class="trouble-label solve">Solve</span>
+          <p>OAuth2 state 파라미터를 활용한 세션 고정 처리 및 리다이렉트 URI 일관성 확보로 문제 해결</p>
+        </div>
+      </div>
+
+      <div class="trouble-card">
+        <div class="trouble-title">영상 시청 트래킹 중복 저장 문제</div>
+        <div class="trouble-row">
+          <span class="trouble-label problem">Problem</span>
+          <p>사용자가 영상을 반복 재생하거나 탭을 여러 개 열었을 때 시청 이력이 중복 저장되어 시청률 집계 오류 발생</p>
+        </div>
+        <div class="trouble-row">
+          <span class="trouble-label cause">Cause</span>
+          <p>클라이언트에서 일정 주기로 트래킹 API를 호출하는 구조로, 동일 세션에서 중복 요청에 대한 서버 측 처리 로직 부재</p>
+        </div>
+        <div class="trouble-row">
+          <span class="trouble-label solve">Solve</span>
+          <p>사용자 ID + 콘텐츠 ID + 날짜를 복합 유니크 키로 설정하고, upsert 방식으로 시청 진행률을 갱신하도록 로직 변경</p>
+        </div>
+      </div>
+
+      <div class="trouble-card">
+        <div class="trouble-title">KMCert 본인인증 콜백 처리 오류</div>
+        <div class="trouble-row">
+          <span class="trouble-label problem">Problem</span>
+          <p>KMCert 본인인증 완료 후 콜백 데이터 복호화 실패로 인증 결과를 정상적으로 수신하지 못하는 오류 발생</p>
+        </div>
+        <div class="trouble-row">
+          <span class="trouble-label cause">Cause</span>
+          <p>운영 환경과 개발 환경의 인증서 키 불일치 및 문자 인코딩(EUC-KR) 처리 누락으로 복호화 과정에서 오류 발생</p>
+        </div>
+        <div class="trouble-row">
+          <span class="trouble-label solve">Solve</span>
+          <p>환경별 인증서 키 분리 관리 및 콜백 데이터 수신 시 EUC-KR 인코딩 명시 처리로 정상 복호화 확인</p>
+        </div>
+      </div>
+
     </div>
 
     <div class="section">
       <p class="section-title">회고</p>
       <div class="retro-card">
-        <p>이 프로젝트를 통해 배운 점, 아쉬웠던 점, 성장한 부분을 자유롭게 작성해 주세요.</p>
+        <p>
+          이 프로젝트는 기존 Spring MVC 기반 레거시 시스템을 REST API 구조로 전환하는 작업이었는데, 단순한 리뉴얼이 아니라 설계 방식 자체를 바꾸는 경험이었습니다.<br><br>
+          백엔드 단독으로 참여한 만큼 API 설계부터 외부 솔루션 연동까지 전반적인 책임을 맡았고, 그 과정에서 OAuth2 인증 흐름이나 본인인증 솔루션 연동처럼 혼자 부딪혀 해결해야 하는 상황이 많았습니다. 처음에는 막막했지만, 문제를 하나씩 파고들며 해결했을 때의 성취감이 컸고 실력적으로도 많이 성장한 프로젝트였습니다.<br><br>
+          아쉬웠던 점은 일정 압박으로 인해 코드 품질보다 기능 완성에 집중할 수밖에 없었던 부분입니다. JPA를 신규 적용했음에도 N+1 문제나 쿼리 최적화에 충분한 시간을 쏟지 못했고, 이후 이런 부분을 더 깊이 공부하는 계기가 되었습니다.
+        </p>
       </div>
     </div>
 
