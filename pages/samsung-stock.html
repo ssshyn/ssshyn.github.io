@@ -65,6 +65,7 @@
     }
     .card-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.6rem; }
     .card-body { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; }
+    .card .card-body + .card-body { margin-top: 1rem; }
 
     /* LIST */
     .task-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
@@ -111,6 +112,7 @@
       border-radius: var(--radius); padding: 1.5rem;
     }
     .retro-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; }
+    .retro-card p + p { margin-top: 1rem; }
 
     /* PLACEHOLDER */
     .placeholder {
@@ -145,6 +147,7 @@
         <span class="meta-tag">Spring Boot</span>
         <span class="meta-tag">JEUS8</span>
         <span class="meta-tag">Subversion</span>
+        <span class="meta-tag">자체 CI/CD 툴</span>
       </div>
     </div>
 
@@ -152,12 +155,22 @@
     <div class="section">
       <p class="section-title">프로젝트 개요</p>
       <div class="card">
-        <ul class="task-list">
-          <li>LLM/빅데이터 제공 솔루션 API 적용으로 주식 인기테마 업데이트 및 랭킹별 정보 제공 메뉴 구현</li>
-          <li>분류된 테마 주식 거래 기능 및 사용자 커스텀 테마 생성 기능 개발</li>
-          <li>솔루션 매칭 테마 외 관리자 CMS 관리 기능 구축</li>
-          <li>사용자 보유 항목 및 테마에 대한 포트폴리오 제공 기능 개발</li>
-        </ul>
+        <p class="card-body">
+          삼성증권의 디지털 채널 경쟁력 강화를 위해, 투자 트렌드를 반영한 <strong>테마 기반 주식 투자 서비스</strong> 구축 
+          <br>프로젝트에 참여하였습니다.
+        </p>
+        <p class="card-body">
+          외부 LLM/빅데이터 솔루션을 활용하여 인기 테마 및 종목 데이터를 제공하고, 
+          <br>이를 기반으로 사용자의 투자 의사결정을 지원하는 서비스입니다.
+        </p>
+        <p class="card-body">
+          본 프로젝트는 약 7명 규모의 팀으로 진행되었으며, 저는 백엔드 개발자로 참여하여 
+          <br><strong>내부 시스템 데이터를 프론트엔드에서 활용 가능한 형태로 가공하고 REST API로 제공</strong>하는 역할을 담당하였습니다.
+        </p>
+        <p class="card-body">
+          특히, 단순 데이터 전달이 아닌 클라이언트 요구사항에 맞춘 DTO 설계 및 응답 최적화를 통해 
+          <br>화면 단에서 효율적으로 사용할 수 있도록 개선하였습니다.
+        </p>
       </div>
     </div>
 
@@ -181,6 +194,32 @@
           <span class="tag">Spring Boot</span>
           <span class="tag">JEUS8</span>
           <span class="tag">Subversion</span>
+          <span class="tag">자체 CI/CD 툴</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 트러블슈팅 -->
+    <div class="section">
+      <p class="section-title">트러블슈팅</p>
+      <div class="trouble-card">
+        <span class="trouble-label problem">문제</span>
+        <div class="trouble-row">
+          <p>
+            보안 정책으로 인해 내부 시스템에서 값을 받는 DTO 객체를 직접 생성할 수 없어,
+            <br>현업에서 생성한 파일을 전달받아 사용하는 방식으로 데이터 연동을 진행하였습니다.
+          </p>
+          <p>
+            이 과정에서 전달받은 파일의 문자 인코딩(EUC-KR)과 서비스 인코딩(UTF-8) 불일치로 인해
+            한글 데이터가 깨지며 정상적인 데이터 파싱이 불가능한 문제가 발생하였습니다.
+          </p>
+        </div>
+        <span class="trouble-label solve">해결</span>
+        <div class="trouble-row">
+          <p>
+            문제 원인을 인코딩 차이로 특정한 후, 파일 수신 시 UTF-8로 변환하여 사용하는 방식으로 대응하였고,
+            <br>해당 변환 과정을 통해 데이터 손상 없이 안정적으로 연동할 수 있도록 개선하였습니다.
+          </p>
         </div>
       </div>
     </div>
@@ -189,7 +228,23 @@
     <div class="section">
       <p class="section-title">회고</p>
       <div class="retro-card">
-        <p>이 프로젝트를 통해 배운 점, 아쉬웠던 점, 성장한 부분을 자유롭게 작성해 주세요.</p>
+        <p>
+          첫 실무 프로젝트를 통해 학습 중심의 개발에서 벗어나, 실제 서비스 환경에서의 개발 방식을 경험할 수 있었습니다.
+        </p>
+        <p>
+          특히, Java Stream 및 Lambda를 활용한 데이터 처리 방식을 적용하며
+          기존의 반복문 중심 코드에서 벗어나 가독성과 유지보수성을 고려한 코드 작성 방식에 대해 이해하게 되었습니다.
+        </p>
+        <p>
+          또한, 기존에 경험했던 MVC 기반 화면 중심 개발과 달리,
+          REST API 기반으로 데이터를 가공하고 전달하는 백엔드 역할을 수행하며
+          클라이언트 요구사항에 맞는 데이터 구조 설계의 중요성을 체감할 수 있었습니다.
+        </p>
+        <p>
+          아울러, 내부 시스템과 프론트엔드 간의 데이터 연동 과정에서
+          단순 기능 구현을 넘어 데이터 흐름과 협업을 고려한 개발의 필요성을 경험하였으며,
+          이를 통해 백엔드 개발자로서 서비스 전반을 이해하는 시각을 갖게 되었습니다.
+        </p>
       </div>
     </div>
 
