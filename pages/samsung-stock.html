@@ -203,19 +203,27 @@
     <div class="section">
       <p class="section-title">트러블슈팅</p>
       <div class="trouble-card">
-        <span class="trouble-label problem">문제</span>
+        <div class="trouble-title">파일 인코딩 불일치로 인한 한글 데이터 깨짐 문제</div>
         <div class="trouble-row">
+          <span class="trouble-label problem">Problem</span>
           <p>
             보안 정책으로 인해 내부 시스템에서 값을 받는 DTO 객체를 직접 생성할 수 없어,
             <br>현업에서 생성한 파일을 전달받아 사용하는 방식으로 데이터 연동을 진행하였습니다.
-          </p>
-          <p>
-            이 과정에서 전달받은 파일의 문자 인코딩(EUC-KR)과 서비스 인코딩(UTF-8) 불일치로 인해
-            한글 데이터가 깨지며 정상적인 데이터 파싱이 불가능한 문제가 발생하였습니다.
+            
+            <br>이 과정에서 전달받은 파일의 문자 인코딩(EUC-KR)과 서비스 인코딩(UTF-8) 불일치로 인해
+            <br>한글 데이터가 깨지며 정상적인 데이터 파싱이 불가능한 문제가 발생하였습니다.
           </p>
         </div>
-        <span class="trouble-label solve">해결</span>
         <div class="trouble-row">
+          <span class="trouble-label cause">Cause</span>
+          <p>
+            현업에서 전달하는 파일이 EUC-KR로 생성·저장되는 반면,
+            <br>애플리케이션은 UTF-8 인코딩을 기준으로 파일을 읽도록 구성되어 있어
+            <br>바이트 해석이 어긋나면서 멀티바이트 문자인 한글 데이터가 깨지는 상황이었습니다.
+          </p>
+        </div>
+        <div class="trouble-row">
+          <span class="trouble-label solve">Solve</span>
           <p>
             문제 원인을 인코딩 차이로 특정한 후, 파일 수신 시 UTF-8로 변환하여 사용하는 방식으로 대응하였고,
             <br>해당 변환 과정을 통해 데이터 손상 없이 안정적으로 연동할 수 있도록 개선하였습니다.
