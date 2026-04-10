@@ -157,6 +157,33 @@
         </div>
       </div>
       <div class="trouble-card">
+        <div class="trouble-title">외부 스크래핑 API 응답 불일치 대응 및 데이터 안정성 개선</div>
+        <div class="trouble-row">
+          <span class="trouble-label problem">Problem</span>
+          <p>
+            외부 스크래핑 솔루션 연동 과정에서 필드명이 잘못 전달되거나 응답 코드가 명세와 다르게 내려오는 문제가 발생하였고,
+            이로 인해 API 파싱 오류 및 기능 정상 동작에 문제가 발생하였습니다.
+          </p>
+        </div>
+        <div class="trouble-row">
+          <span class="trouble-label cause">Cause</span>
+          <p>
+            외부 솔루션 API의 응답 스펙이 명확히 고정되지 않은 상태에서 개발이 진행되었으며
+            일부 케이스에서 필드명 오타, 응답 코드 불일치 등 명세와 실제 응답 간 차이가 발생하였습니다.
+          </p>
+        </div>
+        <div class="trouble-row">
+          <span class="trouble-label solve">Solve</span>
+          <p>
+            문제 발생 시 응답 로그를 기반으로 원인을 분석하고, 외부 업체와 협의하여 정확한 스펙을 재정의하였습니다.
+          </p>
+          <p>
+            또한, 변경된 응답 구조에 맞춰 파싱 로직 및 DTO를 수정하여 정상적으로 데이터를 처리할 수 있도록 개선하였습니다.
+            이를 통해 외부 API 변경에도 유연하게 대응할 수 있는 구조를 확보하였습니다.
+          </p>
+        </div>
+      </div>
+      <div class="trouble-card">
         <div class="trouble-title">Maven 버전 변경으로 인한 Nexus 의존성 다운로드 실패 해결</div>
         <div class="trouble-row">
           <span class="trouble-label problem">Problem</span>
@@ -188,33 +215,6 @@
           </p>
         </div>
       </div>
-      <div class="trouble-card">
-        <div class="trouble-title">외부 스크래핑 API 응답 불일치 대응 및 데이터 안정성 개선</div>
-        <div class="trouble-row">
-          <span class="trouble-label problem">Problem</span>
-          <p>
-            외부 스크래핑 솔루션 연동 과정에서 필드명이 잘못 전달되거나 응답 코드가 명세와 다르게 내려오는 문제가 발생하였고,
-            이로 인해 API 파싱 오류 및 기능 정상 동작에 문제가 발생하였습니다.
-          </p>
-        </div>
-        <div class="trouble-row">
-          <span class="trouble-label cause">Cause</span>
-          <p>
-            외부 솔루션 API의 응답 스펙이 명확히 고정되지 않은 상태에서 개발이 진행되었으며
-            일부 케이스에서 필드명 오타, 응답 코드 불일치 등 명세와 실제 응답 간 차이가 발생하였습니다.
-          </p>
-        </div>
-        <div class="trouble-row">
-          <span class="trouble-label solve">Solve</span>
-          <p>
-            문제 발생 시 응답 로그를 기반으로 원인을 분석하고, 외부 업체와 협의하여 정확한 스펙을 재정의하였습니다.
-          </p>
-          <p>
-            또한, 변경된 응답 구조에 맞춰 파싱 로직 및 DTO를 수정하여 정상적으로 데이터를 처리할 수 있도록 개선하였습니다.
-            이를 통해 외부 API 변경에도 유연하게 대응할 수 있는 구조를 확보하였습니다.
-          </p>
-        </div>
-      </div>
     </div>
 
     <div class="section">
@@ -236,7 +236,6 @@
           유연한 대응 구조와 체계적인 테스트 전략이 필수적이라는 점을 배울 수 있었습니다.</p>
       </div>
     </div>
-
   </div>
 </body>
 </html>
